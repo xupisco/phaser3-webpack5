@@ -8,7 +8,31 @@ module.exports = {
     devtool: 'inline-source-map',
     
     entry: {
-        game: './src/game.js'
+        game: './src/js/game.js'
+    },
+    
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                include: path.resolve(__dirname, 'src/js'),
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.scss$/,
+                include: path.resolve(__dirname, 'src/scss'),
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
+            }
+        ]
     },
     
     plugins: [
