@@ -2,16 +2,24 @@ import '../scss/game.scss';
 import { SampleScene } from './scenes/sample_scene';
 
 var config = {
+    title: 'Hello World Phaser JS',
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    parent: 'game_container',
+
+    scale: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+    },
+
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 200 }
+            gravity: { y: 200 },
+            debug: true,
         }
     },
+
+    transparent: true,
+    parent: 'game_container',
     scene: SampleScene
 };
 

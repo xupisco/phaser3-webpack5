@@ -6,11 +6,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
-    
+
     entry: {
         game: './src/js/game.js'
     },
-    
+
     module: {
         rules: [
             {
@@ -34,7 +34,7 @@ module.exports = {
             }
         ]
     },
-    
+
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
@@ -43,15 +43,17 @@ module.exports = {
             __ENV__: this.mode
         }),
     ],
-    
+
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: "[name].bundle.js",
+        path: path.resolve(__dirname, './dist'),
     },
-    
+
     devServer: {
-        contentBase: path.resolve(__dirname, './'),
-        publicPath: './',
-        writeToDisk: true
+        static: path.resolve(__dirname, './'),
+        devMiddleware: {
+            publicPath: './dist',
+            writeToDisk: true
+        }
     }
 }
