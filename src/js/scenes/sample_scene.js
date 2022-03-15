@@ -2,14 +2,14 @@ export class SampleScene extends Phaser.Scene {
     constructor(config) {
         super({ key: 'sample_scene' });
     }
-    
-    preload() {
-        this.load.setBaseURL('https://labs.phaser.io');
 
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
+    preload() {
+        //this.load.setBaseURL('https://labs.phaser.io');
+
+        this.load.image('fireball', 'assets/sprites/fireball.png');
+        this.load.image('red', 'https://labs.phaser.io/assets/particles/muzzleflash2.png');
     }
-    
+
     create() {
         var particles = this.add.particles('red');
 
@@ -19,12 +19,12 @@ export class SampleScene extends Phaser.Scene {
             blendMode: 'ADD'
         });
 
-        var logo = this.physics.add.image(400, 100, 'logo');
+        var fireball = this.physics.add.image(400, 100, 'fireball');
 
-        logo.setVelocity(150, 200);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
+        fireball.setVelocity(150, 200);
+        fireball.setBounce(1, 1);
+        fireball.setCollideWorldBounds(true);
 
-        emitter.startFollow(logo);
+        emitter.startFollow(fireball);
     }
 }
